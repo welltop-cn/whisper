@@ -230,6 +230,7 @@ def transcribe(
     ) as pbar:
         last_speech_timestamp = 0.0
         while seek < content_frames:
+            seek = int(seek)
             time_offset = float(seek * HOP_LENGTH / SAMPLE_RATE)
             mel_segment = mel[:, seek : seek + N_FRAMES]
             segment_size = min(N_FRAMES, content_frames - seek)
